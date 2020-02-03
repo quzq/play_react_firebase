@@ -1,24 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import FirestoreContainer from './containers/FirestoreContainer'
+import FireauthContainer from './containers/FireauthContainer'
+import FirestorageContainer from './containers/FirestorageContainer'
+import FirefuncContainer from './containers/FirefuncContainer'
 
 function App() {
+  const [user, setUser] = useState(null);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <FireauthContainer onAuthStateChanged={(user) => { setUser(user) }} user={user}></FireauthContainer>
+      <FirestoreContainer></FirestoreContainer>
+      <FirestorageContainer></FirestorageContainer>
     </div>
   );
 }
