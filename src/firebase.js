@@ -6,7 +6,7 @@ import 'firebase/storage'
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-  apiKey: "",
+  apiKey: "AIzaSyB9rhnD-JqhhjiqeRXcg28JySZvJ8QXam4",
   authDomain: "myproject-3ef0f.firebaseapp.com",
   databaseURL: "https://myproject-3ef0f.firebaseio.com",
   projectId: "myproject-3ef0f",

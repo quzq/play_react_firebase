@@ -4,7 +4,20 @@ import firebase from '../firebase'
 // Firebase Authentication
 
 class FireauthContainer extends Component {
-  state = {
+    constructor(props){
+        super(props);
+        this.signInWithGoogle = this.signInWithGoogle.bind(this);
+    }
+
+    signInWithGoogle() {
+        const provider = new firebase.auth.GoogleAuthProvider()
+        firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(result => {
+            console.log(result);
+          });
+    }  state = {
     user: null
   }
 
@@ -17,7 +30,13 @@ class FireauthContainer extends Component {
 
   login() {
     const provider = new firebase.auth.GoogleAuthProvider()
-    firebase.auth().signInWithRedirect(provider)
+    //firebase.auth().signInWithRedirect(provider)
+        firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(result => {
+            alert(result)
+          });    
   }
 
   logout() {
@@ -36,7 +55,9 @@ class FireauthContainer extends Component {
           ) : (
               <button onClick={this.login}>Google Login</button>
             )}
-        </>
+                <div className="signin_button">
+                    <img src="../btn_google_signin.png" onClick={()=>this.signInWithGoogle()} alt="google signin"/>
+                </div>        </>
       )
   }
 }
